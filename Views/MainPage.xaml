@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.MainPage"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+
+    <Grid Padding="20">
+        <!-- Главная сетка с двумя строками -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Верхняя область: заполняет всё доступное пространство -->
+            <RowDefinition Height="Auto" />
+            <!-- Нижняя область: занимает минимальную высоту -->
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя часть: контент -->
+        <Grid Grid.Row="0" Padding="0,0,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Row="0" Grid.Column="1">
+                <Entry x:Name="CityEntry" Placeholder="Введите название города" Text="{Binding City}" />
+            </Frame>
+            <Label x:Name="TypingIndicator" Text="{Binding TypingIndicator}" Grid.Row="1" Grid.Column="1" FontSize="16" />
+            <Button Text="Получить погоду" Command="{Binding GetWeatherCommand}" Grid.Row="2" Grid.Column="1">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="0.95" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Button>
+            <Label x:Name="WeatherInfo" Text="{Binding WeatherInfo}" Grid.Row="3" Grid.Column="1" FontSize="18" />
+        </Grid>
+
+        <!-- Нижняя часть: кнопки -->
+        <Grid Grid.Row="1" ColumnSpacing="10" Padding="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Кнопка смены темы -->
+            <Button x:Name="ToggleThemeButton"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="End"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    BackgroundColor="{DynamicResource ToggleThemeButtonColor}"
+                    Clicked="OnToggleThemeClicked">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="0.95" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Button>
+
+            <!-- Кнопка "О приложении" -->
+            <Button x:Name="NavigateToAboutButton"
+                    Grid.Column="1"
+                    Text="О приложении"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Command="{Binding NavigateToAboutCommand}">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="0.95" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Button>
+        </Grid>
+    </Grid>
+</ContentPage>

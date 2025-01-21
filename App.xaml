@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#2196F3</Color>
+            <Color x:Key="SecondaryColor">#FFFFFF</Color>
+            <Color x:Key="BackgroundColorLight">#FFFFFF</Color>
+            <Color x:Key="BackgroundColorDark">#121212</Color>
+            <Color x:Key="TextColorLight">#000000</Color>
+            <Color x:Key="TextColorDark">#FFFFFF</Color>
+            <Color x:Key="ToggleThemeButtonColor">#000000</Color>
+            <Color x:Key="BorderColorLight">#CCCCCC</Color>
+            <Color x:Key="BorderColorDark">#FFFFFF</Color>
+
+            <!-- Добавление динамических ресурсов для PlaceholderColor -->
+            <Color x:Key="PlaceholderColorLight">#757575</Color>
+            <Color x:Key="PlaceholderColorDark">#BDBDBD</Color>
+
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="BorderColor" Value="{DynamicResource BorderColor}" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+                <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="PlaceholderColor" Value="{DynamicResource PlaceholderColor}" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+                <Setter Property="TextColor" Value="{DynamicResource SecondaryColor}" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
+
+            <!-- Добавление динамических ресурсов для PlaceholderColor -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <Color x:Key="PlaceholderColor">#757575</Color>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
